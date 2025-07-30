@@ -1,24 +1,96 @@
 package com.example.userinterfaceforpublic;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-public class EmergencyGuideActivity extends AppCompatActivity {
+import com.example.userinterfaceforpublic.databinding.ActivityEmergencyGuideBinding;
+import com.example.userinterfaceforpublic.databinding.NavigationDrawerBinding;
+import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
+
+public class EmergencyGuidesActivity extends AppCompatActivity {
+
+    ActivityEmergencyGuideBinding binding;
+    ToolBarBinding toolbarBinding;
+    NavigationDrawerBinding navDrawerBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_emergency_guide);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Inflate ViewBinding
+        binding = ActivityEmergencyGuideBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Access included layouts
+        toolbarBinding = binding.tool;
+        navDrawerBinding = binding.navDrawer;
+
+        // Menu click (toolbar)
+        toolbarBinding.menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDrawer(binding.drawerLayout);
+            }
         });
+
+        // Home click
+        navDrawerBinding.home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(EmergencyGuidesActivity.this, MainActivity.class);
+            }
+        });
+
+        // Emergency Guides (refresh current)
+        navDrawerBinding.emGuides.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recreate();
+            }
+        });
+
+        // Notifications
+        navDrawerBinding.notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(EmergencyGuidesActivity.this, NotificationActivity.class);
+            }
+        });
+
+        // Settings
+        navDrawerBinding.settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(EmergencyGuidesActivity.this, SettingsActivity.class);
+            }
+        });
+    }
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    public static void redirectActivity(Activity activity, Class<?> secondActivity) {
+        Intent intent = new Intent(activity, secondActivity);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(binding.drawerLayout);
     }
 }
