@@ -50,7 +50,7 @@ public class NotificationActivity extends AppCompatActivity {
         navDrawerBinding.emGuides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                redirectActivity(NotificationActivity.this, EmergencyGuidesActivity.class);
+                redirectActivity(NotificationActivity.this, EmergencyGuideActivity.class);
             }
         });
 

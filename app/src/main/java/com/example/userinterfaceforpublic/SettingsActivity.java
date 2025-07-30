@@ -50,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
         navDrawerBinding.emGuides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                redirectActivity(SettingsActivity.this, EmergencyGuidesActivity.class);
+                redirectActivity(SettingsActivity.this, EmergencyGuideActivity.class);
             }
         });
 

@@ -5,19 +5,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.userinterfaceforpublic.databinding.ActivityEmergencyGuideBinding;
 import com.example.userinterfaceforpublic.databinding.NavigationDrawerBinding;
 import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
 
-public class EmergencyGuidesActivity extends AppCompatActivity {
+public class EmergencyGuideActivity extends AppCompatActivity {
 
-    ActivityEmergencyGuideBinding binding;
-    ToolBarBinding toolbarBinding;
-    NavigationDrawerBinding navDrawerBinding;
+    private ActivityEmergencyGuideBinding binding;
+    private ToolBarBinding toolbarBinding;
+    private NavigationDrawerBinding navDrawerBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class EmergencyGuidesActivity extends AppCompatActivity {
         navDrawerBinding.home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                redirectActivity(EmergencyGuidesActivity.this, MainActivity.class);
+                redirectActivity(EmergencyGuideActivity.this, MainActivity.class);
             }
         });
 
@@ -59,7 +63,7 @@ public class EmergencyGuidesActivity extends AppCompatActivity {
         navDrawerBinding.notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                redirectActivity(EmergencyGuidesActivity.this, NotificationActivity.class);
+                redirectActivity(EmergencyGuideActivity.this, NotificationActivity.class);
             }
         });
 
@@ -67,7 +71,7 @@ public class EmergencyGuidesActivity extends AppCompatActivity {
         navDrawerBinding.settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                redirectActivity(EmergencyGuidesActivity.this, SettingsActivity.class);
+                redirectActivity(EmergencyGuideActivity.this, SettingsActivity.class);
             }
         });
     }
