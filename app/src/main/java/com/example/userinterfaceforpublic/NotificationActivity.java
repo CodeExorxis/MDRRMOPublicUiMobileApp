@@ -15,7 +15,7 @@ import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    ActivityNotificationBinding binding;
+    ActivityNotificationBinding root;
     ToolBarBinding toolbarBinding;
     NavigationDrawerBinding navDrawerBinding;
 
@@ -23,18 +23,18 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityNotificationBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        root = ActivityNotificationBinding.inflate(getLayoutInflater());
+        setContentView(root.getRoot());
 
         // Included layouts
-        toolbarBinding = binding.tool;
-        navDrawerBinding = binding.navDrawer;
+        toolbarBinding = root.tool;
+        navDrawerBinding = root.navDrawer;
 
         // Menu click (toolbar)
         toolbarBinding.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDrawer(binding.drawerLayout);
+                openDrawer(root.drawerLayout);
             }
         });
 
@@ -90,6 +90,6 @@ public class NotificationActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        closeDrawer(binding.drawerLayout);
+        closeDrawer(root.drawerLayout);
     }
 }

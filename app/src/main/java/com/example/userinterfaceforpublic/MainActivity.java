@@ -15,7 +15,7 @@ import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    ActivityMainBinding root;
     ToolBarBinding toolbarBinding;
     NavigationDrawerBinding navDrawerBinding;
 
@@ -23,18 +23,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        root = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(root.getRoot());
 
         // Access included layouts
-        toolbarBinding = binding.tool;
-        navDrawerBinding = binding.navDrawer;
+        toolbarBinding = root.tool;
+        navDrawerBinding = root.navDrawer;
 
         // Set menu click
         toolbarBinding.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDrawer(binding.drawerLayout);
+                openDrawer(root.drawerLayout);
             }
         });
 
@@ -90,6 +90,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        closeDrawer(binding.drawerLayout);
+        closeDrawer(root.drawerLayout);
     }
 }

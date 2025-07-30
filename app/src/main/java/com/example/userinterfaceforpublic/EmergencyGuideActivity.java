@@ -19,27 +19,27 @@ import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
 
 public class EmergencyGuideActivity extends AppCompatActivity {
 
-    private ActivityEmergencyGuideBinding binding;
-    private ToolBarBinding toolbarBinding;
-    private NavigationDrawerBinding navDrawerBinding;
+   ActivityEmergencyGuideBinding root;
+   ToolBarBinding toolbarBinding;
+   NavigationDrawerBinding navDrawerBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Inflate ViewBinding
-        binding = ActivityEmergencyGuideBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        root = ActivityEmergencyGuideBinding.inflate(getLayoutInflater());
+        setContentView(root.getRoot());
 
         // Access included layouts
-        toolbarBinding = binding.tool;
-        navDrawerBinding = binding.navDrawer;
+        toolbarBinding = root.tool;
+        navDrawerBinding = root.navDrawer;
 
         // Menu click (toolbar)
         toolbarBinding.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDrawer(binding.drawerLayout);
+                openDrawer(root.drawerLayout);
             }
         });
 
@@ -95,6 +95,6 @@ public class EmergencyGuideActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        closeDrawer(binding.drawerLayout);
+        closeDrawer(root.drawerLayout);
     }
 }

@@ -15,7 +15,7 @@ import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    ActivitySettingsBinding binding;
+    ActivitySettingsBinding root;
     ToolBarBinding toolbarBinding;
     NavigationDrawerBinding navDrawerBinding;
 
@@ -23,18 +23,18 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivitySettingsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        root = ActivitySettingsBinding.inflate(getLayoutInflater());
+        setContentView(root.getRoot());
 
         // Access included bindings
-        toolbarBinding = binding.tool;
-        navDrawerBinding = binding.navDrawer;
+        toolbarBinding = root.tool;
+        navDrawerBinding =root.navDrawer;
 
         // Menu button (toolbar)
         toolbarBinding.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDrawer(binding.drawerLayout);
+                openDrawer(root.drawerLayout);
             }
         });
 
@@ -90,6 +90,6 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        closeDrawer(binding.drawerLayout);
+        closeDrawer(root.drawerLayout);
     }
 }
