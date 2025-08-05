@@ -33,7 +33,6 @@
             android:text="GOOGLE MAP API"
             android:gravity="center"/>
 
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -45,6 +44,7 @@
         <include
             android:id="@+id/navDrawer"
             layout="@layout/navigation_drawer"/>
+
     </RelativeLayout>
 
 
