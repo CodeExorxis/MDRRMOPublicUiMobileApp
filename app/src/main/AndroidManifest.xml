@@ -13,6 +13,15 @@
         android:theme="@style/Theme.UserInterfaceForPublic"
         tools:targetApi="31">
         <activity
+            android:name=".OneTimePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoInternetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChangePasswordActivity"
             android:exported="false" />
         <activity
