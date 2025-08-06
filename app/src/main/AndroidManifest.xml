@@ -25,13 +25,13 @@
             android:name=".ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".LogInActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".LogInActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
@@ -43,7 +43,7 @@
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

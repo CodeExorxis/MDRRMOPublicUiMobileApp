@@ -14,10 +14,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.userinterfaceforpublic.databinding.ActivityMainBinding;
 import com.example.userinterfaceforpublic.databinding.NavigationDrawerBinding;
 import com.example.userinterfaceforpublic.databinding.ToolBarBinding;
+import com.example.userinterfaceforpublic.databinding.ActivityLogInBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding root;
+    LogInActivity root1;
     ToolBarBinding toolbarBinding;
     NavigationDrawerBinding navDrawerBinding;
 
@@ -200,6 +202,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("sms_body", "Hello, Kialangan ko po ng tulong Medical.");
             startActivity(intent);
         });
+
+        // it redirect to log in layout
+        navDrawerBinding.logout.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, LogInActivity.class));
+        });
+
     }
 
     @Override
