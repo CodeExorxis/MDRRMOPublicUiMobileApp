@@ -21,7 +21,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         setContentView(root.getRoot());
 
         root.OTPbtnContinue.setOnClickListener(v -> {
-            startActivity(new Intent(ForgotPasswordActivity.this, MainActivity.class));
+            startActivity(new Intent(ForgotPasswordActivity.this, OneTimePasswordActivity.class));
             finish();
         });
     }
